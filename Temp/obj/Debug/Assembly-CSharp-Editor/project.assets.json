@@ -1,0 +1,129 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETStandard,Version=v2.1": {
+      "Assembly-CSharp/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "NavMeshComponents": "1.0.0",
+          "NavMeshComponentsEditor": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Assembly-CSharp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Assembly-CSharp.dll": {}
+        }
+      },
+      "NavMeshComponents/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/NavMeshComponents.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NavMeshComponents.dll": {}
+        }
+      },
+      "NavMeshComponentsEditor/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "NavMeshComponents": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/NavMeshComponentsEditor.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NavMeshComponentsEditor.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Assembly-CSharp/1.0.0": {
+      "type": "project",
+      "path": "Assembly-CSharp.csproj",
+      "msbuildProject": "Assembly-CSharp.csproj"
+    },
+    "NavMeshComponents/1.0.0": {
+      "type": "project",
+      "path": "NavMeshComponents.csproj",
+      "msbuildProject": "NavMeshComponents.csproj"
+    },
+    "NavMeshComponentsEditor/1.0.0": {
+      "type": "project",
+      "path": "NavMeshComponentsEditor.csproj",
+      "msbuildProject": "NavMeshComponentsEditor.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETStandard,Version=v2.1": [
+      "Assembly-CSharp >= 1.0.0",
+      "NavMeshComponents >= 1.0.0",
+      "NavMeshComponentsEditor >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/playcrab/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/Shared/Relocated Items/Security/data/work/UnityDemos/Survival/SurvivalDefence/Assembly-CSharp-Editor.csproj",
+      "projectName": "Assembly-CSharp-Editor",
+      "projectPath": "/Users/Shared/Relocated Items/Security/data/work/UnityDemos/Survival/SurvivalDefence/Assembly-CSharp-Editor.csproj",
+      "packagesPath": "/Users/playcrab/.nuget/packages/",
+      "outputPath": "/Users/Shared/Relocated Items/Security/data/work/UnityDemos/Survival/SurvivalDefence/Temp/obj/Debug/Assembly-CSharp-Editor/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/playcrab/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netstandard2.1"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "projectReferences": {
+            "/Users/Shared/Relocated Items/Security/data/work/UnityDemos/Survival/SurvivalDefence/Assembly-CSharp.csproj": {
+              "projectPath": "/Users/Shared/Relocated Items/Security/data/work/UnityDemos/Survival/SurvivalDefence/Assembly-CSharp.csproj"
+            },
+            "/Users/Shared/Relocated Items/Security/data/work/UnityDemos/Survival/SurvivalDefence/NavMeshComponents.csproj": {
+              "projectPath": "/Users/Shared/Relocated Items/Security/data/work/UnityDemos/Survival/SurvivalDefence/NavMeshComponents.csproj"
+            },
+            "/Users/Shared/Relocated Items/Security/data/work/UnityDemos/Survival/SurvivalDefence/NavMeshComponentsEditor.csproj": {
+              "projectPath": "/Users/Shared/Relocated Items/Security/data/work/UnityDemos/Survival/SurvivalDefence/NavMeshComponentsEditor.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netstandard2.1": {
+        "targetAlias": "netstandard2.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.419/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

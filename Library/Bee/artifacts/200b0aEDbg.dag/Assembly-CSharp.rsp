@@ -443,6 +443,7 @@
 "Assets/SurvivalEngine/Scripts/Gameplay/Destructible.cs"
 "Assets/SurvivalEngine/Scripts/Gameplay/DigSpot.cs"
 "Assets/SurvivalEngine/Scripts/Gameplay/Door.cs"
+"Assets/SurvivalEngine/Scripts/Gameplay/EnemySpawn.cs"
 "Assets/SurvivalEngine/Scripts/Gameplay/EquipAttach.cs"
 "Assets/SurvivalEngine/Scripts/Gameplay/EquipItem.cs"
 "Assets/SurvivalEngine/Scripts/Gameplay/ExitZone.cs"
