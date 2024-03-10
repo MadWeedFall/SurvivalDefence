@@ -29,9 +29,9 @@ MonoBehaviour:
   craft_xp_type: 
   craft_sound: {fileID: 8300000, guid: a959259a1dc64384291aa531cc0f73b1, type: 3}
   type: 10
-  inventory_max: 20
-  durability_type: 10
-  durability: 50
+  inventory_max: 999
+  durability_type: 0
+  durability: 0
   equip_slot: 0
   equip_side: 0
   armor: 0

@@ -125,6 +125,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &499202132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6778699993473853970, guid: 35721d40c53744f4b945769b3cf3965b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6778699993444609846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1089716022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DesiredEnemyCount: 100
-  SpawnInterval: 3
+  SpawnInterval: 2
   EnemyPrefab: {fileID: 24023026832555573, guid: 408fdcb8f88603c469a60ab04249be40,
     type: 3}
   PlayerCharacterInst: {fileID: 6778699993444609847}
@@ -692,7 +698,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6778699993473853970, guid: 35721d40c53744f4b945769b3cf3965b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6778699993444609859}
   m_SourcePrefab: {fileID: 100100000, guid: 35721d40c53744f4b945769b3cf3965b, type: 3}
 --- !u!114 &6778699993444609847 stripped
 MonoBehaviour:
@@ -700,12 +710,37 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6778699993444609846}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 499202132}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71ef48a91b33525499bcaff13b0a7258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6778699993444609858 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6778699993473853971, guid: 35721d40c53744f4b945769b3cf3965b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6778699993444609846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6778699993444609859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499202132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b36caa441cc574aa09ab57cefbccb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack_damage: 50
+  attack_range: 20
+  attack_cooldown: 1
+  shoot_root: {fileID: 6778699993444609858}
+  projectile_prefab: {fileID: 5124338624607127083, guid: c5329f017159cd641afdb907cac6f349,
+    type: 3}
+  IsPlayerAttack: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

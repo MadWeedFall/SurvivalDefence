@@ -17,6 +17,8 @@ namespace SurvivalEngine
         public UnityAction<CraftData> onCraft;
         public UnityAction<Buildable> onBuild;
 
+        public bool IsFreeBuild = false;
+
         private PlayerCharacter character;
 
         private Buildable current_buildable = null;
@@ -31,6 +33,7 @@ namespace SurvivalEngine
         private void Awake()
         {
             character = GetComponent<PlayerCharacter>();
+            IsFreeBuild = true;
         }
 
         void Start()
@@ -69,12 +72,12 @@ namespace SurvivalEngine
                     CompleteCrafting();
             }
 
-            //Complet Building after timer
-            if(current_build_data != null)
-            {
-                if(build_timer>current_build_data.craft_duration)
-                    CompleteFreeBuilding();
-            }
+            // //Complet Building after timer
+            // if(current_build_data != null)
+            // {
+            //     if(build_timer>current_build_data.craft_duration)
+            //         CompleteFreeBuilding();
+            // }
         }
 
         //---- Crafting ----

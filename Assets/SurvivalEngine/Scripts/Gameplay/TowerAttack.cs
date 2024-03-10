@@ -18,10 +18,14 @@ namespace SurvivalEngine
         private Destructible destruct;
         private float timer = 0f;
 
+        public bool IsPlayerAttack;
+        private PlayerCharacter _playerCharacter;
+
         private void Awake()
         {
             buildable = GetComponent<Buildable>();
             destruct = GetComponent<Destructible>();
+            _playerCharacter = IsPlayerAttack?shoot_root.GetComponent<PlayerCharacter>():null;
         }
 
         private void Update()
@@ -42,6 +46,7 @@ namespace SurvivalEngine
 
         public void ShootNearestEnemy()
         {
+            if(IsPlayerAttack&&(_playerCharacter==null||_playerCharacter.IsDead())) return;
             Destructible nearest = Destructible.GetNearestAttack(AttackTeam.Enemy, transform.position, attack_range);
             Shoot(nearest);
         }
@@ -55,7 +60,8 @@ namespace SurvivalEngine
                 Vector3 dir = target.GetCenter() - pos;
                 GameObject proj = Instantiate(projectile_prefab, pos, Quaternion.LookRotation(dir.normalized, Vector3.up));
                 Projectile project = proj.GetComponent<Projectile>();
-                project.shooter = destruct;
+                if(!IsPlayerAttack) project.shooter = destruct;
+                else project.player_shooter = shoot_root.GetComponent<PlayerCharacter>();
                 project.dir = dir.normalized;
                 project.damage = damage;
             }

@@ -886,6 +886,7 @@ namespace SurvivalEngine
 
                 if (!TheGame.IsMobile()) //On mobile, will build on mouse release
                     character_craft.TryBuildAt(pos);
+                    if(character_craft.IsFreeBuild) character_craft.CompleteFreeBuilding();
             }
             //Move to clicked position
             else if (interact_type == PlayerInteractBehavior.MoveAndInteract)

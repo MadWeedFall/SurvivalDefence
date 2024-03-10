@@ -13,11 +13,19 @@ public class EnemySpawn : MonoBehaviour
 
     private float _spawnDuration = 0.0f;
 
+    private bool _pauseSpawn;
+
+    public bool PauseSpawn
+    {
+        get => _pauseSpawn;
+        set => _pauseSpawn = value;
+    } 
 
     void Awake()
     {
         if(_enemyPrefabs==null) _enemyPrefabs = new List<GameObject>();
         _spawnDuration = 0.0f;
+        _pauseSpawn = false;
     }
 
     public void SpwanOneEnemy()
@@ -30,6 +38,8 @@ public class EnemySpawn : MonoBehaviour
                 enemyGo.transform.parent = transform;
                 _enemyPrefabs.Add(enemyGo);
                 var enemyDesctruct = enemyGo.transform.GetComponent<Destructible>();
+                var enemyAnimalWild = enemyGo.transform.GetComponent<AnimalWild>();
+                enemyAnimalWild.AttackTarget(PlayerCharacterInst);
                 enemyDesctruct.onDeath = delegate{
                     _enemyPrefabs.Remove(enemyGo);
                 };
@@ -40,16 +50,21 @@ public class EnemySpawn : MonoBehaviour
         }
     }
 
+    public void Pause(bool flag=true)
+    {
+        _pauseSpawn = flag;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _enemyPrefabs.Clear();
-        SpwanOneEnemy();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(_pauseSpawn) return;
         if (TheGame.Get().IsPaused())
                 return;
 
