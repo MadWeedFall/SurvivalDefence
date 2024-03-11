@@ -46,6 +46,8 @@ namespace SurvivalEngine
 
         public UnityAction<string, float> onTriggerAnim;
 
+        public int Money;
+
         private Rigidbody rigid;
         private CapsuleCollider collide;
         private PlayerCharacterAttribute character_attr;
