@@ -13,6 +13,7 @@ public class EnemySpawn : MonoBehaviour
 
     private float _spawnDuration = 0.0f;
 
+    [SerializeField]
     private bool _pauseSpawn;
 
     public bool PauseSpawn
@@ -70,6 +71,9 @@ public class EnemySpawn : MonoBehaviour
 
         if (PlayerCharacterInst!=null&&PlayerCharacterInst.IsDead())
                 return;
+        PlayerData pdata = PlayerData.Get();
+        int time_hours = Mathf.FloorToInt(pdata.day_time);
+        if(time_hours<PlayerCharacterInst.WorkHourStart||time_hours>=PlayerCharacterInst.WorkHourEnd) return;
 
         _spawnDuration += Time.deltaTime;
         if(_spawnDuration>=SpawnInterval)

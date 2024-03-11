@@ -47,6 +47,8 @@ namespace SurvivalEngine
         public UnityAction<string, float> onTriggerAnim;
 
         public int Money;
+        public int WorkHourStart=9;
+        public int WorkHourEnd=17;
 
         private Rigidbody rigid;
         private CapsuleCollider collide;

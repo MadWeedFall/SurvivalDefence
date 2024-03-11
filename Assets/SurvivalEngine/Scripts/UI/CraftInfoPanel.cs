@@ -62,7 +62,7 @@ namespace SurvivalEngine
         {
             slot.SetSlot(data, data.craft_quantity, true);
             title.text = data.title;
-            desc.text = data.desc;
+            
 
             foreach (ItemSlot slot in craft_slots)
                 slot.Hide();
@@ -70,6 +70,7 @@ namespace SurvivalEngine
             PlayerCharacter player = GetPlayer();
 
             CraftCostData cost = data.GetCraftCost();
+            int MoneyCost = 0;
             int index = 0;
             foreach (KeyValuePair<ItemData, int> pair in cost.craft_items)
             {
@@ -79,6 +80,7 @@ namespace SurvivalEngine
                     slot.SetSlot(pair.Key, pair.Value, false);
                     slot.SetFilter(player.Inventory.HasItem(pair.Key, pair.Value) ? 0 : 2);
                     slot.ShowTitle();
+                    MoneyCost += pair.Key.buy_cost;
                 }
                 index++;
             }
@@ -120,6 +122,8 @@ namespace SurvivalEngine
             }
 
             craft_btn.interactable = player.Crafting.CanCraft(data);
+
+            desc.text = data.desc+"\nMoney Cost: "+MoneyCost;
         }
 
         public void ShowData(CraftData item)

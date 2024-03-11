@@ -68,7 +68,7 @@ namespace SurvivalEngine {
             base.Update();
 
             PlayerCharacter character = GetPlayer();
-            int gold = (character != null) ? character.SaveData.gold : 0;
+            int gold = (character != null) ? character.Money : 0;
             if(gold_value != null)
                 gold_value.text = gold.ToString();
 

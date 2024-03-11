@@ -249,7 +249,7 @@ namespace SurvivalEngine
             if(item!=null&&inventory.IsItemIn(item.id, slot))
             {
                 character.Money = character.Money+item.sell_cost*idata.quantity<=int.MaxValue?character.Money+item.sell_cost*idata.quantity:character.Money;
-                inventory.RemoveItemAt(slot,1);
+                inventory.RemoveItemAt(slot,idata.quantity);
             }
         }
 

@@ -51,12 +51,13 @@ MonoBehaviour:
   eat_bonus: []
   eat_bonus_duration: 0
   actions:
+  - {fileID: 11400000, guid: e76777dbbd72e417fa26794f1cbd691b, type: 2}
   - {fileID: 11400000, guid: 303f8b2db86c0064aa7067d5332c4658, type: 2}
+  - {fileID: 11400000, guid: 7415804d79a06514db64b07b1f2b6f45, type: 2}
   - {fileID: 11400000, guid: c940e7d1134ced948824248625884a12, type: 2}
   - {fileID: 11400000, guid: d2e00df561181024d9d85af8d6b9c5bc, type: 2}
-  - {fileID: 11400000, guid: 7415804d79a06514db64b07b1f2b6f45, type: 2}
-  buy_cost: 0
-  sell_cost: 0
+  buy_cost: 2
+  sell_cost: 1
   container_data: {fileID: 0}
   plant_data: {fileID: 0}
   construction_data: {fileID: 0}
