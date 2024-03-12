@@ -46,7 +46,19 @@ namespace SurvivalEngine
 
         public UnityAction<string, float> onTriggerAnim;
 
-        public int Money;
+        private int _moneny;
+        public int Money
+        {
+            get{
+                return _moneny;
+            }
+            set
+            {
+                _moneny = value;
+                PlayerData.Get().Money = _moneny;
+            }
+        }
+
         public int WorkHourStart=9;
         public int WorkHourEnd=17;
 
@@ -1136,6 +1148,13 @@ namespace SurvivalEngine
         public bool IsMovementEnabled()
         {
             return move_enabled && movement_enabled && !IsDead() && !IsRiding() && !IsClimbing();
+        }
+
+        public bool IsInWorkingTime()
+        {
+            PlayerData pdata = PlayerData.Get();
+            int time_hours = Mathf.FloorToInt(pdata.day_time);
+            return time_hours>=WorkHourStart&&time_hours<=WorkHourEnd;
         }
 
         public PlayerCharacterCombat Combat

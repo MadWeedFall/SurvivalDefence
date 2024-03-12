@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   id: water
-  title: Water
+  title: Branded Bottle Water
   icon: {fileID: 21300000, guid: 97f13b01e62486f46990c7f1f51ee2a0, type: 3}
-  desc: Fresh Water
+  desc: Branded Bottle Water
   groups:
-  - {fileID: 11400000, guid: d4c186142a74aaf4a875143c5f02b5a2, type: 2}
-  craftable: 0
+  - {fileID: 11400000, guid: 372cdb04558f5244dba55876bd902466, type: 2}
+  craftable: 1
   craft_quantity: 1
   craft_duration: 0
   craft_sort_order: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   craft_xp_type: 
   craft_sound: {fileID: 8300000, guid: a959259a1dc64384291aa531cc0f73b1, type: 3}
   type: 10
-  inventory_max: 5
+  inventory_max: 999
   durability_type: 10
   durability: 200
   equip_slot: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   strike_interval: 0
   eat_hp: 0
   eat_hunger: 0
-  eat_thirst: 25
+  eat_thirst: 50
   eat_happiness: 0
   eat_bonus: []
   eat_bonus_duration: 0
@@ -55,9 +55,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b94e4bbb8bf4cb48b46286a8f5a473f, type: 2}
   - {fileID: 11400000, guid: c940e7d1134ced948824248625884a12, type: 2}
   - {fileID: 11400000, guid: d2e00df561181024d9d85af8d6b9c5bc, type: 2}
-  buy_cost: 0
-  sell_cost: 0
-  container_data: {fileID: 11400000, guid: 4469943e2e06010469c9257e0c3153ee, type: 2}
+  buy_cost: 100
+  sell_cost: 1
+  container_data: {fileID: 0}
   plant_data: {fileID: 0}
   construction_data: {fileID: 0}
   character_data: {fileID: 0}

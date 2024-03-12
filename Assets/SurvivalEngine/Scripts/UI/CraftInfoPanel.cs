@@ -80,7 +80,7 @@ namespace SurvivalEngine
                     slot.SetSlot(pair.Key, pair.Value, false);
                     slot.SetFilter(player.Inventory.HasItem(pair.Key, pair.Value) ? 0 : 2);
                     slot.ShowTitle();
-                    MoneyCost += pair.Key.buy_cost;
+                    MoneyCost += pair.Key.buy_cost*pair.Value;
                 }
                 index++;
             }
@@ -123,6 +123,7 @@ namespace SurvivalEngine
 
             craft_btn.interactable = player.Crafting.CanCraft(data);
 
+            MoneyCost = MoneyCost>0?MoneyCost:250;
             desc.text = data.desc+"\nMoney Cost: "+MoneyCost;
         }
 

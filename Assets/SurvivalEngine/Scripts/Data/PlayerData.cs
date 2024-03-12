@@ -32,6 +32,8 @@ namespace SurvivalEngine
         public float music_volume = 1f;
         public float sfx_volume = 1f;
 
+        public int Money;
+
         public Dictionary<int, PlayerCharacterData> player_characters = new Dictionary<int, PlayerCharacterData>();
         public Dictionary<string, InventoryData> inventories = new Dictionary<string, InventoryData>();
 
