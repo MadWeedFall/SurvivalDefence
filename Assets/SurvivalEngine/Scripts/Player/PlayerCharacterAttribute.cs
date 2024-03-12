@@ -54,6 +54,7 @@ namespace SurvivalEngine
                     //when at work, happiness drops quickly
                     update_value = attr.value_per_hour*10.0f + GetBonusEffectTotal(BonusEffectData.GetAttributeBonusType(attr.type));
                 }
+                
                 if(character.IsLackOfSleep())
                 {
                     update_value = attr.value_per_hour*10.0f + GetBonusEffectTotal(BonusEffectData.GetAttributeBonusType(attr.type));

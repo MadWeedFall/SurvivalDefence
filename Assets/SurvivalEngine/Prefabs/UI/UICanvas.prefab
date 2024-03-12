@@ -26268,7 +26268,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: YOU DID NOT SURVIVE
+  m_Text: YOUR GAME DEV CAREER DID NOT WORK
 --- !u!114 &147782360021184837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30475,7 +30475,7 @@ GameObject:
   - component: {fileID: 357930488363808712}
   - component: {fileID: 3757107742218644449}
   m_Layer: 5
-  m_Name: CoinValue (1)
+  m_Name: ShowTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39320,6 +39320,7 @@ MonoBehaviour:
   day_txt: {fileID: 5353819617165690140}
   time_txt: {fileID: 3450273968605073731}
   clock_fill: {fileID: 1688902415876720125}
+  show_txt: {fileID: 3757107742218644449}
 --- !u!1 &5829014557063594121
 GameObject:
   m_ObjectHideFlags: 0

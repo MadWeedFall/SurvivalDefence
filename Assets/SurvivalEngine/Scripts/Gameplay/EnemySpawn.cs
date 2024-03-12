@@ -27,6 +27,10 @@ public class EnemySpawn : MonoBehaviour
         if(_enemyPrefabs==null) _enemyPrefabs = new List<GameObject>();
         _spawnDuration = 0.0f;
         _pauseSpawn = false;
+        TheUI.Get().game_over_panel.onShow+= delegate
+        {
+            Clear();
+        };
     }
 
     public void SpwanOneEnemy()
@@ -57,10 +61,27 @@ public class EnemySpawn : MonoBehaviour
         _pauseSpawn = flag;
     }
 
+    public int GetEnemyCount()
+    {
+        return _enemyPrefabs.Count;
+    }
+
+    public void Clear()
+    {
+        if(_enemyPrefabs.Count>0)
+        {
+            for(int i=0;i<_enemyPrefabs.Count;i++)
+            {
+                Destroy(_enemyPrefabs[i]);
+            }
+        }
+        _enemyPrefabs.Clear();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        _enemyPrefabs.Clear();
+        Clear();
     }
 
     // Update is called once per frame
@@ -74,7 +95,7 @@ public class EnemySpawn : MonoBehaviour
                 return;
         PlayerData pdata = PlayerData.Get();
         int time_hours = Mathf.FloorToInt(pdata.day_time);
-        if(time_hours<PlayerCharacterInst.WorkHourStart||time_hours>=PlayerCharacterInst.WorkHourEnd) return;
+        // if(time_hours<PlayerCharacterInst.WorkHourStart||time_hours>=PlayerCharacterInst.WorkHourEnd) return;
 
         _spawnDuration += Time.deltaTime;
         if(_spawnDuration>=SpawnInterval)

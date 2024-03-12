@@ -32,6 +32,8 @@ namespace SurvivalEngine
         private float game_speed = 1f;
         private float game_speed_per_sec = 0.002f;
 
+        public TheLevels levels;
+
         private static TheGame _instance;
 
         void Awake()

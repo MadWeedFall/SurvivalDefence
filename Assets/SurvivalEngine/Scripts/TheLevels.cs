@@ -22,6 +22,11 @@ public class TheLevels : MonoBehaviour
         boarSpawn2.Pause(true);
     }
 
+    public int GetTotalEnemyCount()
+    {
+        return wolfSpawn.GetEnemyCount()+beerSpawn.GetEnemyCount()+boarSpawn1.GetEnemyCount()+boarSpawn2.GetEnemyCount();
+    }
+
     // Update is called once per frame
     void Update()
     {
