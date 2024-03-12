@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
+using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -82,7 +84,7 @@ namespace SurvivalEngine
 
         //---- Crafting ----
 
-        public bool CanCraft(CraftData item, bool skip_cost = true, bool skip_near = false)
+        public bool CanCraft(CraftData item, bool skip_cost = false, bool skip_near = false)
         {
             if (item == null || character.IsDead())
                 return false;
@@ -114,10 +116,15 @@ namespace SurvivalEngine
             return false;
         }
 
-        public bool HasCraftCost(CraftData item)
+        public bool HasCraftItemCost(CraftData item)
+        {
+            CraftCostData cost = item.GetCraftCost();
+            return HasCraftItemCost(cost);
+        }
+
+        public bool HasCraftItemCost(CraftCostData cost)
         {
             bool can_craft = true;
-            CraftCostData cost = item.GetCraftCost();
             Dictionary<GroupData, int> item_groups = new Dictionary<GroupData, int>(); //Add to groups so that fillers are not same than items
 
             foreach (KeyValuePair<ItemData, int> pair in cost.craft_items)
@@ -139,16 +146,50 @@ namespace SurvivalEngine
                 if (CountRequirements(pair.Key) < pair.Value)
                     can_craft = false; //Dont have required constructions
             }
+
             return can_craft;
+        }
+
+        public bool HasCraftCost(CraftData item)
+        {
+            bool can_craft = true;
+            CraftCostData cost = item.GetCraftCost();
+            Dictionary<GroupData, int> item_groups = new Dictionary<GroupData, int>(); //Add to groups so that fillers are not same than items
+            int MoneyCost = 0;
+            foreach (KeyValuePair<ItemData, int> pair in cost.craft_items)
+            {
+                AddCraftCostItemsGroups(item_groups, pair.Key, pair.Value);
+                if (!character.Inventory.HasItem(pair.Key, pair.Value))
+                    can_craft = false; //Dont have required items
+                MoneyCost += pair.Key.buy_cost*pair.Value;
+            }
+
+            foreach (KeyValuePair<GroupData, int> pair in cost.craft_fillers)
+            {
+                int value = pair.Value + CountCraftCostGroup(item_groups, pair.Key);
+                if (!character.Inventory.HasItemInGroup(pair.Key, value))
+                    can_craft = false; //Dont have required items
+            }
+
+            foreach (KeyValuePair<CraftData, int> pair in cost.craft_requirements)
+            {
+                if (CountRequirements(pair.Key) < pair.Value)
+                    can_craft = false; //Dont have required constructions
+            }
+
+            MoneyCost = MoneyCost!=0?MoneyCost:250;
+            bool hasMoney = character.Money>=MoneyCost;
+            return can_craft||hasMoney;
         }
 
         public bool HasCraftNear(CraftData item)
         {
             bool can_craft = true;
             CraftCostData cost = item.GetCraftCost();
+            int moneyCost = item.GetCraftMonenyCost();
             if (cost.craft_near != null && !character.IsNearGroup(cost.craft_near) && !character.EquipData.HasItemInGroup(cost.craft_near))
                 can_craft = false; //Not near required construction
-            return can_craft;
+            return can_craft||moneyCost<=character.Money;
         }
 
         private void AddCraftCostItemsGroups(Dictionary<GroupData, int> item_groups, ItemData item, int quantity)
@@ -171,13 +212,27 @@ namespace SurvivalEngine
         public void PayCraftingCost(CraftData item)
         {
             CraftCostData cost = item.GetCraftCost();
-            foreach (KeyValuePair<ItemData, int> pair in cost.craft_items)
+            if(HasCraftItemCost(cost))
             {
-                character.Inventory.UseItem(pair.Key, pair.Value);
+                foreach (KeyValuePair<ItemData, int> pair in cost.craft_items)
+                {
+                    character.Inventory.UseItem(pair.Key, pair.Value);
+                }
+                foreach (KeyValuePair<GroupData, int> pair in cost.craft_fillers)
+                {
+                    character.Inventory.UseItemInGroup(pair.Key, pair.Value);
+                }
             }
-            foreach (KeyValuePair<GroupData, int> pair in cost.craft_fillers)
+            else
             {
-                character.Inventory.UseItemInGroup(pair.Key, pair.Value);
+                //Pay money
+                int moneyCost = 0;
+                foreach (KeyValuePair<ItemData, int> pair in cost.craft_items)
+                {
+                    moneyCost+=pair.Key.buy_cost;
+                }
+                moneyCost = moneyCost>0?moneyCost:250;
+                character.Money -= moneyCost;
             }
         }
 
@@ -567,6 +622,8 @@ namespace SurvivalEngine
 
                     // character.SaveData.AddCraftCount(item.id);
                     // character.Attributes.GainXP(item.craft_xp_type, item.craft_xp);
+                    int monenyCost = current_build_data.GetCraftMonenyCost();
+                    character.Money -= monenyCost;
 
                     current_buildable = null;
                     current_build_data = null;
@@ -575,6 +632,8 @@ namespace SurvivalEngine
 
                     PlayerUI.Get(character.player_id)?.CancelSelection();
                     TheAudio.Get().PlaySFX("craft", buildable.build_audio);
+
+
 
                     if (onBuild != null)
                         onBuild.Invoke(buildable);

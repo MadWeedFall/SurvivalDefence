@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ac43a7b6117843a9cb91735638cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 80
+  hp: 200
   armor: 0
   hp_regen: 0
   target_team: 10
@@ -379,12 +379,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b36caa441cc574aa09ab57cefbccb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack_damage: 10
+  attack_damage: 15
   attack_range: 20
   attack_cooldown: 0.5
   shoot_root: {fileID: 4113721298782051664}
   projectile_prefab: {fileID: 5124338624607127083, guid: 1dbdda58f194df745afb38805cb774e2,
     type: 3}
+  IsPlayerAttack: 0
 --- !u!1001 &7987787008919422858
 PrefabInstance:
   m_ObjectHideFlags: 0

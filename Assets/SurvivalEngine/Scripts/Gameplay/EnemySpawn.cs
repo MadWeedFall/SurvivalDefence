@@ -37,6 +37,7 @@ public class EnemySpawn : MonoBehaviour
             if(enemyGo!=null) 
             {
                 enemyGo.transform.parent = transform;
+                enemyGo.transform.position = transform.position;
                 _enemyPrefabs.Add(enemyGo);
                 var enemyDesctruct = enemyGo.transform.GetComponent<Destructible>();
                 var enemyAnimalWild = enemyGo.transform.GetComponent<AnimalWild>();

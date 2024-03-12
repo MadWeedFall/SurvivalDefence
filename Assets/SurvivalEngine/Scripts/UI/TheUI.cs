@@ -18,6 +18,8 @@ namespace SurvivalEngine
         public CanvasGroup gameplay_ui;
         public PausePanel pause_panel;
         public GameOverPanel game_over_panel;
+        
+        public GameTitlePanel game_title_panel;
 
         [Header("Material")]
         public Material ui_material;
@@ -32,6 +34,8 @@ namespace SurvivalEngine
         private RectTransform rect;
 
         private static TheUI _instance;
+
+        private bool _isFirstEnter;
 
         void Awake()
         {
@@ -49,6 +53,7 @@ namespace SurvivalEngine
                 foreach (Text txt in GetComponentsInChildren<Text>())
                     txt.material = text_material;
             }
+            _isFirstEnter = true;
         }
 
         private void Start()
@@ -68,6 +73,8 @@ namespace SurvivalEngine
             PlayerUI gameplay_ui = GetComponentInChildren<PlayerUI>();
             if (gameplay_ui == null)
                 Debug.LogError("Warning: Missing PlayerUI script on the Gameplay tab in the UI prefab");
+            game_title_panel.SetVisible(_isFirstEnter);
+            _isFirstEnter = false;
         }
 
         void Update()
@@ -109,6 +116,13 @@ namespace SurvivalEngine
                 TheGame.Get().Pause();
 
             TheAudio.Get().PlaySFX("UI", ui_sound);
+        }
+
+        public void OnClickStart()
+        {
+            game_title_panel.SetVisible(false);
+            if (TheGame.Get().IsPaused())
+                TheGame.Get().Unpause();
         }
 
         public bool IsBlockingPanelOpened()

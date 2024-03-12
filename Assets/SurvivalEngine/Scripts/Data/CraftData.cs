@@ -138,6 +138,18 @@ namespace SurvivalEngine
             return cost;
         }
 
+        public int GetCraftMonenyCost()
+        {
+            var cost = GetCraftCost();
+            int monenyCost =0;
+            foreach(var pair in cost.craft_items)
+            {
+                monenyCost+=pair.Key.buy_cost*pair.Value;
+            }
+            monenyCost = monenyCost>0?monenyCost:250;
+            return monenyCost;
+        }
+
         public static void Load(string folder = "")
         {
             craft_data.Clear();
