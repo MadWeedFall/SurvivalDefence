@@ -720,7 +720,7 @@ PrefabInstance:
     - target: {fileID: 114397502295942162, guid: c61f50c50fef25e43a159d8e505a6973,
         type: 3}
       propertyPath: move_speed
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114397502295942162, guid: c61f50c50fef25e43a159d8e505a6973,
         type: 3}
@@ -736,6 +736,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attack_enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114397502295942162, guid: c61f50c50fef25e43a159d8e505a6973,
+        type: 3}
+      propertyPath: follow_distance
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114602626830061112, guid: c61f50c50fef25e43a159d8e505a6973,
         type: 3}

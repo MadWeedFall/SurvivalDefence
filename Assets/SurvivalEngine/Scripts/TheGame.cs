@@ -428,7 +428,7 @@ namespace SurvivalEngine
 
             if (beforeSave != null)
                 beforeSave.Invoke(filename);
-
+            PlayerData.Get().Money = PlayerCharacter.GetFirst().Money;
             PlayerData.Save(filename, PlayerData.Get());
             return true;
         }

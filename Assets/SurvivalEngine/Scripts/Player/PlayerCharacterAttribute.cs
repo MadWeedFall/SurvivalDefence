@@ -51,8 +51,12 @@ namespace SurvivalEngine
                 float update_value = attr.value_per_hour + GetBonusEffectTotal(BonusEffectData.GetAttributeBonusType(attr.type));
                 if(attr.type == AttributeType.Happiness&&character.IsInWorkingTime())
                 {
-                    //when at work, happiness drops double speed
-                    update_value = attr.value_per_hour*3.0f + GetBonusEffectTotal(BonusEffectData.GetAttributeBonusType(attr.type));
+                    //when at work, happiness drops quickly
+                    update_value = attr.value_per_hour*10.0f + GetBonusEffectTotal(BonusEffectData.GetAttributeBonusType(attr.type));
+                }
+                if(character.IsLackOfSleep())
+                {
+                    update_value = attr.value_per_hour*10.0f + GetBonusEffectTotal(BonusEffectData.GetAttributeBonusType(attr.type));
                 }
                 update_value = update_value * game_speed * Time.deltaTime;
                 CharacterData.AddAttributeValue(attr.type, update_value, GetAttributeMax(attr.type));

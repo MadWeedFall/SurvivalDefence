@@ -49,7 +49,7 @@ MonoBehaviour:
   strike_interval: 0
   eat_hp: 20
   eat_hunger: 40
-  eat_thirst: 0
+  eat_thirst: -20
   eat_happiness: 20
   eat_bonus: []
   eat_bonus_duration: 0

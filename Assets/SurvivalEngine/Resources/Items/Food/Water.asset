@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   id: water
-  title: Branded Bottle Water
+  title: Bottle Water
   icon: {fileID: 21300000, guid: 97f13b01e62486f46990c7f1f51ee2a0, type: 3}
-  desc: Branded Bottle Water
+  desc: 'Branded Bottle Water
+
+    Natural spring water contains only naturally occurring
+    electrolytes from the French Alps'
   groups:
   - {fileID: 11400000, guid: 372cdb04558f5244dba55876bd902466, type: 2}
   craftable: 1

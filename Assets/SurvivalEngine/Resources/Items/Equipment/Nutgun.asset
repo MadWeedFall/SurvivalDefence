@@ -15,7 +15,9 @@ MonoBehaviour:
   id: nutgun
   title: Nut-gun
   icon: {fileID: 21300000, guid: 2590900764944374898644af1d0ed6ee, type: 3}
-  desc: Ranged weapon that shoots nuts!
+  desc: 'Ranged weapon that shoots nuts!
+
+    You learn how to use it through FPS.'
   groups:
   - {fileID: 11400000, guid: 9f19be8f45aa5a542910e6f90b6256a6, type: 2}
   craftable: 0
@@ -46,7 +48,7 @@ MonoBehaviour:
   damage: 15
   range: 7
   attack_speed: 1
-  attack_cooldown: 1
+  attack_cooldown: 0.5
   strike_per_attack: 2
   strike_interval: 0.2
   eat_hp: 0

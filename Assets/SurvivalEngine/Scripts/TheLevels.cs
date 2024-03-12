@@ -30,16 +30,22 @@ public class TheLevels : MonoBehaviour
         {
              wolfSpawn.Pause(false);
         }
-        else if(pdata.day>1&&pdata.day<3)
+        else if(pdata.day>1&&pdata.day<5)
         {
+            wolfSpawn.Pause(false);
             beerSpawn.Pause(false);
         }
-        else if(pdata.day>=3&&pdata.day<5)
+        else if(pdata.day>=5&&pdata.day<7)
         {
+            wolfSpawn.Pause(false);
+            beerSpawn.Pause(false);
             boarSpawn1.Pause(false);
         }
         else
         {
+            wolfSpawn.Pause(false);
+            beerSpawn.Pause(false);
+            boarSpawn1.Pause(false);
             boarSpawn2.Pause(false);
         }
     }

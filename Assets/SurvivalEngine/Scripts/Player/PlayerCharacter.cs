@@ -46,21 +46,25 @@ namespace SurvivalEngine
 
         public UnityAction<string, float> onTriggerAnim;
 
-        private int _moneny;
+        [SerializeField]
         public int Money
         {
             get{
-                return _moneny;
+                return PlayerData.Get().Money;
             }
             set
             {
-                _moneny = value;
-                PlayerData.Get().Money = _moneny;
+                PlayerData.Get().Money = value;
             }
         }
 
         public int WorkHourStart=9;
         public int WorkHourEnd=17;
+
+        public int LateNightStart = 3;
+
+        public int MorningStart = 6;
+
 
         private Rigidbody rigid;
         private CapsuleCollider collide;
@@ -1155,6 +1159,14 @@ namespace SurvivalEngine
             PlayerData pdata = PlayerData.Get();
             int time_hours = Mathf.FloorToInt(pdata.day_time);
             return time_hours>=WorkHourStart&&time_hours<=WorkHourEnd;
+        }
+
+        public bool IsLackOfSleep()
+        {
+            PlayerData pdata = PlayerData.Get();
+            int time_hours = Mathf.FloorToInt(pdata.day_time);
+            bool isLateNight = time_hours>=3&&time_hours<6;
+            return isLateNight&&!IsSleeping();
         }
 
         public PlayerCharacterCombat Combat

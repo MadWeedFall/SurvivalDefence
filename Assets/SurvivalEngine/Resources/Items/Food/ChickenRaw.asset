@@ -55,8 +55,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c940e7d1134ced948824248625884a12, type: 2}
   - {fileID: 11400000, guid: d2e00df561181024d9d85af8d6b9c5bc, type: 2}
   - {fileID: 11400000, guid: bf4be3105a71cff4da930924a77474a5, type: 2}
-  buy_cost: 1
-  sell_cost: 1
+  buy_cost: 100
+  sell_cost: 10
   container_data: {fileID: 0}
   plant_data: {fileID: 0}
   construction_data: {fileID: 0}
