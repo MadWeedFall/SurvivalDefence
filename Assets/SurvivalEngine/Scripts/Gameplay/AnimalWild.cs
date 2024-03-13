@@ -82,6 +82,8 @@ namespace SurvivalEngine
         private float lure_interest = 8f;
         private bool force_action = false;
         private float update_timer = 0f;
+        
+        private Vector3 _startPos;
 
         void Awake()
         {
@@ -104,6 +106,12 @@ namespace SurvivalEngine
             destruct.onDamagedBy += OnDamagedBy;
             destruct.onDamagedByPlayer += OnDamagedPlayer;
             destruct.onDeath += OnDeath;
+
+        }
+
+        public void SetStartPos(Vector3 pos)
+        {
+            start_pos = pos;
         }
 
         void FixedUpdate()

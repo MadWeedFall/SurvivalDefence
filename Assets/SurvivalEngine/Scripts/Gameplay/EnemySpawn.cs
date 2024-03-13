@@ -27,10 +27,7 @@ public class EnemySpawn : MonoBehaviour
         if(_enemyPrefabs==null) _enemyPrefabs = new List<GameObject>();
         _spawnDuration = 0.0f;
         _pauseSpawn = false;
-        TheUI.Get().game_over_panel.onShow+= delegate
-        {
-            Clear();
-        };
+
     }
 
     public void SpwanOneEnemy()
@@ -40,11 +37,13 @@ public class EnemySpawn : MonoBehaviour
             var enemyGo = Instantiate(EnemyPrefab);
             if(enemyGo!=null) 
             {
-                enemyGo.transform.parent = transform;
-                enemyGo.transform.position = transform.position;
+                var pos = transform.position;
+                enemyGo.transform.parent = transform; 
+                enemyGo.transform.position = pos;
                 _enemyPrefabs.Add(enemyGo);
                 var enemyDesctruct = enemyGo.transform.GetComponent<Destructible>();
                 var enemyAnimalWild = enemyGo.transform.GetComponent<AnimalWild>();
+                enemyAnimalWild.SetStartPos(pos);
                 enemyAnimalWild.AttackTarget(PlayerCharacterInst);
                 enemyDesctruct.onDeath = delegate{
                     _enemyPrefabs.Remove(enemyGo);
@@ -55,6 +54,7 @@ public class EnemySpawn : MonoBehaviour
 
         }
     }
+
 
     public void Pause(bool flag=true)
     {
@@ -82,6 +82,10 @@ public class EnemySpawn : MonoBehaviour
     void Start()
     {
         Clear();
+        TheUI.Get().game_over_panel.onShow+= delegate
+        {
+            Clear();
+        };
     }
 
     // Update is called once per frame
@@ -95,7 +99,7 @@ public class EnemySpawn : MonoBehaviour
                 return;
         PlayerData pdata = PlayerData.Get();
         int time_hours = Mathf.FloorToInt(pdata.day_time);
-        // if(time_hours<PlayerCharacterInst.WorkHourStart||time_hours>=PlayerCharacterInst.WorkHourEnd) return;
+        if(time_hours<PlayerCharacterInst.WorkHourStart||time_hours>=PlayerCharacterInst.WorkHourEnd) return;
 
         _spawnDuration += Time.deltaTime;
         if(_spawnDuration>=SpawnInterval)
